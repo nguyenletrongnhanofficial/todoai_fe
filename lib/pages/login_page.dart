@@ -227,203 +227,219 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
             },
           ),
           SingleChildScrollView(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-                    Widget>[
-              Center(
-                child: Container(
-                    padding: EdgeInsets.fromLTRB(0, statusBarHeight, 0, 0),
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child: Column(
-                      children: <Widget>[
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        const Text(
-                          'TodoAi',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontFamily: 'TodoAi-Bold',
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Lottie.asset(
-                              'assets/lotties/login.json',
-                              height: height * 0.3,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Center(
+                    child: Container(
+                        padding: EdgeInsets.fromLTRB(0, statusBarHeight, 0, 0),
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: Column(
+                          children: <Widget>[
+                            const SizedBox(
+                              height: 30,
                             ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              //width: MediaQuery.of(context).size.width * 0.9,
-                              child: const Text(
-                                'Chào mừng đã trở lại',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 22,
-                                    fontFamily: 'TodoAi-Bold',
-                                    fontWeight: FontWeight.bold),
+                            const Text(
+                              'TodoAi',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontFamily: 'TodoAi-Bold',
                               ),
                             ),
-                            Lottie.asset(
-                              'assets/lotties/hi.json',
-                              height: height * 0.08,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Lottie.asset(
+                                  'assets/lotties/login.json',
+                                  height: height * 0.3,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Form(
-                          key: _formKey,
-                          child: Column(children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  //width: MediaQuery.of(context).size.width * 0.9,
+                                  child: const Text(
+                                    'Chào mừng đã trở lại',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 22,
+                                        fontFamily: 'TodoAi-Bold',
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Lottie.asset(
+                                  'assets/lotties/hi.json',
+                                  height: height * 0.08,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Form(
+                              key: _formKey,
+                              child: Column(children: <Widget>[
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  height: mediaHeight * 0.08,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(25),
+                                    shape: BoxShape.rectangle,
+                                  ),
+                                  child: TextFormField(
+                                      controller: phone,
+                                      keyboardType: TextInputType.number,
+                                      textInputAction: TextInputAction.done,
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        fillColor: const Color(0xfff7f8f9),
+                                        hintText: 'Số điện thoại',
+                                        hintStyle: const TextStyle(
+                                          fontFamily: 'TodoAi-Book',
+                                          color: Color(0xff616161),
+                                        ),
+                                        prefixIcon: Image.asset(
+                                            'assets/images/phone_icon.png'),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide.none,
+                                          borderRadius: BorderRadius.circular(
+                                              25), //<-- ADD THIS
+                                        ),
+                                      ),
+                                      style: const TextStyle(
+                                        fontFamily: 'TodoAi-Book',
+                                        color: Colors.black,
+                                      ),
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return "Điền số điện thoại vào!";
+                                        } else {
+                                          return null;
+                                        }
+                                      }),
+                                ),
+                                Container(
+                                  height: 10,
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  height: mediaHeight * 0.08,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(25),
+                                    shape: BoxShape.rectangle,
+                                  ),
+                                  child: TextFormField(
+                                      controller: password,
+                                      obscureText: isPasswordVisibleOld,
+                                      textInputAction: TextInputAction.done,
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        fillColor: const Color(0xfff7f8f9),
+                                        hintText: 'Mật khẩu',
+                                        hintStyle: const TextStyle(
+                                          fontFamily: 'TodoAi-Book',
+                                          color: Color(0xff616161),
+                                        ),
+                                        prefixIcon: Image.asset(
+                                            'assets/images/password.png'),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide.none,
+                                          borderRadius: BorderRadius.circular(
+                                              25), //<-- ADD THIS
+                                        ),
+                                        suffixIcon: IconButton(
+                                          icon: isPasswordVisibleOld
+                                              ? const Image(
+                                                  color: Color(0xFF60778C),
+                                                  width: 24,
+                                                  height: 24,
+                                                  image: AssetImage(
+                                                      'assets/images/eyeOff.png'))
+                                              : const Image(
+                                                  color: Color(0xFF60778C),
+                                                  width: 24,
+                                                  height: 24,
+                                                  image: AssetImage(
+                                                      'assets/images/eyeOn.png')),
+                                          onPressed: () => setState(() =>
+                                              isPasswordVisibleOld =
+                                                  !isPasswordVisibleOld),
+                                        ),
+                                      ),
+                                      style: const TextStyle(
+                                        fontFamily: 'TodoAi-Book',
+                                        color: Colors.black,
+                                      ),
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return "Điền mật khẩu!";
+                                        } else {
+                                          return null;
+                                        }
+                                      }),
+                                ),
+                              ]),
+                            ),
                             Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: mediaHeight * 0.08,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: TextFormField(
-                                  controller: phone,
-                                  keyboardType: TextInputType.number,
-                                  textInputAction: TextInputAction.done,
-                                  decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: const Color(0xfff7f8f9),
-                                    hintText: 'Số điện thoại',
-                                    hintStyle: const TextStyle(
-                                      fontFamily: 'TodoAi-Book',
-                                      color: Color(0xff616161),
-                                    ),
-                                    prefixIcon: Image.asset(
-                                        'assets/images/phone_icon.png'),
-                                    border: OutlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(
-                                          25), //<-- ADD THIS
-                                    ),
-                                  ),
-                                  style: const TextStyle(
-                                    fontFamily: 'TodoAi-Book',
-                                    color: Colors.black,
-                                  ),
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return "Điền số điện thoại vào!";
-                                    } else {
-                                      return null;
-                                    }
-                                  }),
+                              height: 20,
                             ),
-                            Container(
-                              height: 10,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: mediaHeight * 0.08,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: TextFormField(
-                                  controller: password,
-                                  obscureText: isPasswordVisibleOld,
-                                  textInputAction: TextInputAction.done,
-                                  decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: const Color(0xfff7f8f9),
-                                    hintText: 'Mật khẩu',
-                                    hintStyle: const TextStyle(
-                                      fontFamily: 'TodoAi-Book',
-                                      color: Color(0xff616161),
-                                    ),
-                                    prefixIcon: Image.asset(
-                                        'assets/images/password.png'),
-                                    border: OutlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(
-                                          25), //<-- ADD THIS
-                                    ),
-                                    suffixIcon: IconButton(
-                                      icon: isPasswordVisibleOld
-                                          ? const Image(
-                                              color: Color(0xFF60778C),
-                                              width: 24,
-                                              height: 24,
-                                              image: AssetImage(
-                                                  'assets/images/eyeOff.png'))
-                                          : const Image(
-                                              color: Color(0xFF60778C),
-                                              width: 24,
-                                              height: 24,
-                                              image: AssetImage(
-                                                  'assets/images/eyeOn.png')),
-                                      onPressed: () => setState(() =>
-                                          isPasswordVisibleOld =
-                                              !isPasswordVisibleOld),
-                                    ),
-                                  ),
-                                  style: const TextStyle(
-                                    fontFamily: 'TodoAi-Book',
-                                    color: Colors.black,
-                                  ),
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return "Điền mật khẩu!";
-                                    } else {
-                                      return null;
-                                    }
-                                  }),
-                            ),
-                          ]),
-                        ),
-                        Container(
-                          height: 20,
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsets.only(bottom: padding.height * 0.02),
-                          child: InkWell(
-                            onTap: () {
-                              print(phone.text);
-                            },
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: mediaHeight * 0.06,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    minimumSize: const Size(213, 50),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(25),
-                                    ),
-                                    primary: AppColor.mainColor,
-                                    onPrimary: Colors.white),
-                                child: FittedBox(
-                                  child: _isLoading
-                                      ? Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            const SizedBox(
-                                              height: 20,
-                                              width: 20,
-                                              child: CircularProgressIndicator(
-                                                color: Colors.white,
-                                                strokeWidth: 4,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 20,
-                                            ),
-                                            const Text(
-                                              'Đang tải...',
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  bottom: padding.height * 0.02),
+                              child: InkWell(
+                                onTap: () {
+                                  print(phone.text);
+                                },
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  height: mediaHeight * 0.06,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        minimumSize: const Size(213, 50),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(25),
+                                        ),
+                                        primary: AppColor.mainColor,
+                                        onPrimary: Colors.white),
+                                    child: FittedBox(
+                                      child: _isLoading
+                                          ? Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                const SizedBox(
+                                                  height: 20,
+                                                  width: 20,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: Colors.white,
+                                                    strokeWidth: 4,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 20,
+                                                ),
+                                                const Text(
+                                                  'Đang tải...',
+                                                  style: TextStyle(
+                                                    fontFamily: 'TodoAi-Medium',
+                                                    //height: 26,
+                                                    color: Colors.white,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          : const Text(
+                                              'Đăng nhập',
                                               style: TextStyle(
                                                 fontFamily: 'TodoAi-Medium',
                                                 //height: 26,
@@ -431,83 +447,73 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                                                 fontSize: 16,
                                               ),
                                             ),
-                                          ],
-                                        )
-                                      : const Text(
-                                          'Đăng nhập',
-                                          style: TextStyle(
-                                            fontFamily: 'TodoAi-Medium',
-                                            //height: 26,
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                ),
-                                onPressed: handleOnPressLogin,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Forget_pass()),
-                              );
-                            },
-                            child: const Text(
-                              'Quên mật khẩu?',
-                              style: TextStyle(
-                                fontFamily: 'TodoAi-Medium',
-                                color: AppColor.mainColor,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        // Container(
-                        //     height: mediaHeight * 0.1,
-                        //     width: MediaQuery.of(context).size.width * 0.9,
-                        //     child: OrDivider()),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            const Text(
-                              'Bạn chưa có tài khoản?',
-                              style: TextStyle(
-                                fontFamily: 'TodoAi-Medium',
-                                color: Colors.black,
-                                fontSize: 16,
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const SignUp()),
-                                );
-                              },
-                              child: const Text(
-                                ' Đăng ký',
-                                style: TextStyle(
-                                  fontFamily: 'TodoAi-Bold',
-                                  color: AppColor.mainColor,
-                                  fontSize: 16,
+                                    ),
+                                    onPressed: handleOnPressLogin,
+                                  ),
                                 ),
                               ),
+                            ),
+                            Center(
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Forget_pass()),
+                                  );
+                                },
+                                child: const Text(
+                                  'Quên mật khẩu?',
+                                  style: TextStyle(
+                                    fontFamily: 'TodoAi-Medium',
+                                    color: AppColor.mainColor,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            // Container(
+                            //     height: mediaHeight * 0.1,
+                            //     width: MediaQuery.of(context).size.width * 0.9,
+                            //     child: OrDivider()),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                const Text(
+                                  'Bạn chưa có tài khoản?',
+                                  style: TextStyle(
+                                    fontFamily: 'TodoAi-Medium',
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const SignUp()),
+                                    );
+                                  },
+                                  child: const Text(
+                                    ' Đăng ký',
+                                    style: TextStyle(
+                                      fontFamily: 'TodoAi-Bold',
+                                      color: AppColor.mainColor,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
-                        ),
-                      ],
-                    )),
-              )
-            ]),
+                        )),
+                  )
+                ]),
           ),
         ],
       ),
